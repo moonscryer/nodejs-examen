@@ -6,7 +6,7 @@ Hey **Jorne**! Here is my miserable attempt at making sense of what I've learned
 
 Status: 200 OK
 
-I am currently able to fetch data manually input into the database through MongoDB Compass.
+I am currently able to fetch all snippets from the database.
 
 ## POST /api/snippets
 
@@ -22,7 +22,7 @@ I don't really understand Codeium's explanation.
 
 Status: 200 OK
 
-I'm able to get snippets by ID. The code displayed is still messed up.
+I'm able to get snippets by ID.
 
 ### Error message:
 
