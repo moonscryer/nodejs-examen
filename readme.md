@@ -45,3 +45,9 @@ Status: 200 OK
 ### Error message:
 
 'No overload matches this call.'
+
+## EJS
+
+The files are made, but I was unable to render the page at all.
+
+Surely I'm overseeing some detail, so I've commented the lines on **server.ts**.

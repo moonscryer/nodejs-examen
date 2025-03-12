@@ -7,6 +7,7 @@ import testRoutes from "./routes/snippetRoutes";
 import { helloMiddleware } from "./middleware/snippetMiddleware";
 import mongoose from "mongoose";
 import connectToDb from "./config/database";
+// import { Snippet } from "./models/snippetModel";
 
 // Variables
 const app = express();
@@ -19,8 +20,14 @@ app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(express.static("src/public"));
 
-// app.get("/index", async (req, res) => {
-//   res.render("index");
+// TODO
+
+// app.get("/", helloMiddleware, async (req, res) => {
+//   const snippets = await Snippet.find();
+//   res.render("index", {
+//     title: "Snippets Database",
+//     snippets,
+//   });
 // });
 
 // Routes

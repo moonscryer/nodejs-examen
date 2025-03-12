@@ -5,6 +5,10 @@ export const helloMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("Let's get snippets!");
-  next();
+  try {
+    console.log("Let's get snippets!");
+    next();
+  } catch (error: unknown) {
+    console.log("Middleware error");
+  }
 };

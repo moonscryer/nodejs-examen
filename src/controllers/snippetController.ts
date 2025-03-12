@@ -35,7 +35,7 @@ export const getSnippetById = async (req: Request, res: Response) => {
     if (!snippet) {
       return res.status(404).json({ error: "Snippet not found" });
     }
-    // Decode base64 encoded code
+    // Decode
     const decodedCode = Buffer.from(snippet.code, "base64").toString("utf-8");
     res.json({
       id: snippet._id,
@@ -92,7 +92,7 @@ export const updateSnippet = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Encode code to avoid issues with double quotes
+    // Encode
     const encodedCode = Buffer.from(code).toString("base64");
 
     const updatedSnippet = await Snippet.findByIdAndUpdate(

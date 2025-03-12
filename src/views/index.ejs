@@ -2,4 +2,33 @@
 
 <div class="container">
   <h1>Snippets API</h1>
+  <table id="vehicleTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Code</th>
+        <th>Language</th>
+        <th>Tags</th>
+        <th>Expires In</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Snippets.forEach((snippet)=>{ %>
+      <tr>
+        <td><%- snippet._id %></td>
+        <td><%- snippet.title %></td>
+        <td><%- snippet.code %></td>
+        <td><%- snippet.language %></td>
+        <td><%- snippet.tags %></td>
+        <td><%- snippet.expiresIn %></td>
+        <td>
+          <button class="red" id="deleteBtn" data-id="<%- snippet._id %>">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </div>
