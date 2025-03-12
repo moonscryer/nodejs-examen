@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Snippet } from "../models/exampleModel";
+import { Snippet } from "../models/snippetModel";
 import { Error as MongooseError } from "mongoose";
 const { ValidationError } = MongooseError;
 

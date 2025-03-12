@@ -3,9 +3,10 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { notFound } from "./controllers/notFoundController";
-import testRoutes from "./routes/exampleRoutes";
-import { helloMiddleware } from "./middleware/exampleMiddleware";
+import testRoutes from "./routes/snippetRoutes";
+import { helloMiddleware } from "./middleware/snippetMiddleware";
 import mongoose from "mongoose";
+import connectToDb from "./config/database";
 
 // Variables
 const app = express();
@@ -14,9 +15,17 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.set("view engine", "ejs");
+app.set("views", "src/views");
+app.use(express.static("src/public"));
+
+// app.get("/", async (req, res) => {
+//   res.render("index");
+// });
 
 // Routes
 app.use("/api", helloMiddleware, testRoutes);
+// app.use("/api/snippets", snippetRoutes);
 app.all("*", notFound);
 
 // Database connection
@@ -29,6 +38,7 @@ try {
 }
 
 // Server Listening
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}! 🚀`);
+  await connectToDb();
 });

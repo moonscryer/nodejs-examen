@@ -17,7 +17,7 @@ Status: 400 Bad Request
 "message": "Snippet validation failed: language: Path `language` is required., code: Path `code` is required., title: Path `title` is required."
 }
 
-### exampleModel.ts is:
+### snippetModel.ts is:
 
 import mongoose from "mongoose";
 

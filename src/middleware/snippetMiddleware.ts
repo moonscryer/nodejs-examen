@@ -5,6 +5,6 @@ export const helloMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("Hello From Middleware");
+  console.log("Let's get snippets!");
   next();
 };

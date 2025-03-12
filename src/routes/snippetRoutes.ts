@@ -4,7 +4,7 @@ import {
   getHelloWorld,
   getSnippets,
   updateSnippet,
-} from "../controllers/exampleController";
+} from "../controllers/snippetController";
 
 const router = express.Router();
 
