@@ -5,7 +5,7 @@ const snippetSchema = new mongoose.Schema({
   code: { type: String, required: true },
   language: { type: String, required: true },
   tags: { type: [String], required: true },
-  expiresAt: { type: Date, default: null },
+  expiresIn: { type: Date, default: null },
 });
 
 export const Snippet = mongoose.model("Snippet", snippetSchema);
