@@ -12,11 +12,13 @@ I am currently able to fetch all snippets from the database.
 
 Status: 201 Created
 
+I can post new snippets to the database, and the code becomes encoded.
+
 ### Error message:
 
 On snippetRoutes.ts there is an issue with getSnippetById: 'No overload matches this call.'
 
-I don't really understand Codeium's explanation.
+I don't really understand Codeium's explanation. But everything is working in spite of this.
 
 ## GET /api/snippets/:id
 
@@ -24,30 +26,18 @@ Status: 200 OK
 
 I'm able to get snippets by ID.
 
-### Error message:
-
-'No overload matches this call.'
-
 ## DELETE /api/snippets/:id
 
 Status: 200 OK
 
 I'm able to delete snippets by ID.
 
-### Error message:
-
-'No overload matches this call.'
-
 ## PUT /api/snippets/:id
 
 Status: 200 OK
 
-### Error message:
-
-'No overload matches this call.'
-
 ## EJS
 
-The files are made, but I was unable to render the page at all.
+The files are made, but I was unable to render the page...
 
 Surely I'm overseeing some detail, so I've commented the lines on **server.ts**.
