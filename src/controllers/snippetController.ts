@@ -48,9 +48,22 @@ export const getSnippetById = async (req: Request, res: Response) => {
 
 export const addSnippet = async (req: Request, res: Response) => {
   try {
-    const { task } = req.body;
-    const snippet = await Snippet.create({ task });
-    res.status(201).json(snippet);
+    const { title, code, language, tags, expiresIn } = req.body;
+    if (!title || !code || !language || !tags) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+    const encodedCode = Buffer.from(code).toString("base64");
+    const snippetData = {
+      title,
+      code: encodedCode,
+      language,
+      tags,
+      expiresIn: expiresIn ? new Date(Date.now() + expiresIn * 1000) : null,
+    };
+    const snippet = new Snippet(snippetData);
+    await snippet.save();
+
+    res.status(201).json({ id: snippet._id, ...snippetData });
   } catch (error: unknown) {
     if (error instanceof ValidationError) {
       res.status(400).json({ message: error.message });
