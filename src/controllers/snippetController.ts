@@ -86,13 +86,39 @@ export const addSnippet = async (req: Request, res: Response) => {
 export const updateSnippet = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { task, done } = req.body;
-    const snippet = await Snippet.findByIdAndUpdate(
+    const { title, code, language, tags, expiresIn } = req.body;
+
+    if (!title || !code || !language || !tags) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Encode code to avoid issues with double quotes
+    const encodedCode = Buffer.from(code).toString("base64");
+
+    const updatedSnippet = await Snippet.findByIdAndUpdate(
       id,
-      { task, done },
+      {
+        title,
+        code: encodedCode,
+        language,
+        tags,
+        expiresIn: expiresIn ? new Date(Date.now() + expiresIn * 1000) : null,
+      },
       { new: true }
     );
-    res.status(200).json(snippet);
+
+    if (!updatedSnippet) {
+      return res.status(404).json({ error: "Snippet not found" });
+    }
+
+    res.json({
+      id: updatedSnippet._id,
+      title: updatedSnippet.title,
+      code: Buffer.from(updatedSnippet.code, "base64").toString("utf-8"),
+      language: updatedSnippet.language,
+      tags: updatedSnippet.tags,
+      expiresIn: updatedSnippet.expiresIn,
+    });
   } catch (error: unknown) {
     if (error instanceof ValidationError) {
       res.status(400).json({ message: error.message });

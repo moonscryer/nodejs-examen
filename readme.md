@@ -37,3 +37,11 @@ I'm able to delete snippets by ID.
 ### Error message:
 
 'No overload matches this call.'
+
+## PUT /api/snippets/:id
+
+Status: 200 OK
+
+### Error message:
+
+'No overload matches this call.'
