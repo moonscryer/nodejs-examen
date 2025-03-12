@@ -10,7 +10,15 @@ export const getHelloWorld = (req: Request, res: Response) => {
 export const getSnippets = async (req: Request, res: Response) => {
   try {
     const snippets = await Snippet.find();
-    res.status(200).json(snippets);
+    const decodedSnippets = snippets.map((snippet) => ({
+      id: snippet._id,
+      title: snippet.title,
+      code: Buffer.from(snippet.code, "base64").toString("utf-8"),
+      language: snippet.language,
+      tags: snippet.tags,
+      expiresIn: snippet.expiresIn,
+    }));
+    res.status(200).json(decodedSnippets);
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });
