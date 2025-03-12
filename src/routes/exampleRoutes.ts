@@ -1,17 +1,17 @@
 import express from "express";
 import {
+  addSnippet,
   getHelloWorld,
-  getTodos,
-  addTodo,
-  updateTodo,
+  getSnippets,
+  updateSnippet,
 } from "../controllers/exampleController";
 
 const router = express.Router();
 
 router
   .get("/test", getHelloWorld)
-  .get("/todos", getTodos)
-  .post("/todos", addTodo)
-  .patch("/todos/:id", updateTodo);
+  .get("/snippets", getSnippets)
+  .post("/snippets", addSnippet)
+  .patch("/snippets/:id", updateSnippet);
 
 export default router;

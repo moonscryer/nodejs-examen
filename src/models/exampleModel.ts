@@ -1,20 +1,11 @@
 import mongoose from "mongoose";
 
-const todoSchema = new mongoose.Schema(
-  {
-    task: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    done: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+const snippetSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  code: { type: String, required: true },
+  language: { type: String, required: true },
+  tags: { type: [String], required: true },
+  expiresAt: { type: Date, default: null },
+});
 
-export const Todo = mongoose.model("Todo", todoSchema);
+export const Snippet = mongoose.model("Snippet", snippetSchema);
