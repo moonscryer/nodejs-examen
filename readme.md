@@ -33,12 +33,19 @@ export const Snippet = mongoose.model("Snippet", snippetSchema);
 
 ## GET /api/snippets/:id
 
-Status: 404 Not Found
+Status: 200 OK
+I'm able to get snippets by ID. The code displayed is still messed up.
 
 ### Error message:
 
-{
-"message": "The requested endpoint doesn't exist.",
-"method": "GET",
-"endpoint": "/api/snippets/67d159aeeba84740a81fa674"
-}
+On snippetRoutes.ts there is an issue with getSnippetById: 'No overload matches this call.'
+I don't really understand Codeium's explanation.
+
+## DELETE /api/snippets/:id
+
+Status: 200 OK
+I'm able to delete snippets by ID.
+
+### Error message:
+
+Same as when getting by ID: 'No overload matches this call.'

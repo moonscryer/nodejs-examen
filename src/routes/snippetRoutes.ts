@@ -1,7 +1,9 @@
 import express from "express";
 import {
   addSnippet,
-  getHelloWorld,
+  deleteSnippetById,
+  // getHelloWorld,
+  getSnippetById,
   getSnippets,
   updateSnippet,
 } from "../controllers/snippetController";
@@ -9,9 +11,11 @@ import {
 const router = express.Router();
 
 router
-  .get("/test", getHelloWorld)
+  // .get("/test", getHelloWorld)
   .get("/snippets", getSnippets)
   .post("/snippets", addSnippet)
-  .patch("/snippets/:id", updateSnippet);
+  .get("/snippets/:id", getSnippetById)
+  .put("/snippets/:id", updateSnippet)
+  .delete("/snippets/:id", deleteSnippetById);
 
 export default router;

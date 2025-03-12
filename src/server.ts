@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(express.static("src/public"));
 
-// app.get("/", async (req, res) => {
+// app.get("/index", async (req, res) => {
 //   res.render("index");
 // });
 
